@@ -1,0 +1,14 @@
+* {
+  background-color: #bebebe;
+  /* Example of box model */
+  /* border: 1px solid #ff0000;
+  padding: 5px;
+  margin: 5px; */
+}
+
+.nav-link {
+  color: #000000;
+  text-decoration: none;
+  padding: 10px;
+  font-size: 20px;
+}
