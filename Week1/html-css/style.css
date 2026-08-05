@@ -16,3 +16,50 @@
   text-decoration: underline;
   font-size: 25px;
 }
+
+/*
+	? compound selectors
+	* utilize relationships
+	* can build relationship structure to access items
+	* ex: first child of the list item immediately inside ul that's in the body
+*/
+
+body ul > li:first-child {
+  color: red;
+}
+
+/*
+	? pseudo element
+	* provides styling aide based on addition of content
+	* it can also provide styling aide based on functionality
+	* ::marker adds a prefix to an element
+*/
+
+li::marker {
+  content: "- ";
+}
+
+/* 
+	* Order of Specificity
+	* !important
+	* inline styling
+	* id
+	* class
+	* element
+*/
+
+div {
+  background-color: yellow;
+}
+
+.class-example {
+  background-color: aqua;
+}
+
+#id-example {
+  background-color: brown;
+}
+
+div {
+  background-color: coral !important;
+}
