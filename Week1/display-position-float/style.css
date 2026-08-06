@@ -1,3 +1,96 @@
 * {
   font-family: Arial, Helvetica, sans-serif;
 }
+
+body {
+  height: 200vh;
+}
+
+.parent-container {
+  width: 75vw;
+  height: 75vh;
+  background-color: beige;
+  border: 2px solid black;
+  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
+  position: relative;
+}
+
+.child {
+  padding: 25px;
+}
+
+.static {
+  /* 
+   ? Static
+   * It is the default position
+   * position in relation to elements
+   * top, right, bottom, left and z-indexproperties do not work
+  */
+  border: 2px solid red;
+  background-color: red;
+  position: static;
+  top: 210px;
+}
+
+.relative {
+  /* 
+   ? Relative
+   * just like static
+   * can change position using top. bottom left, right and z-index
+   * values are relative to its original position
+   !Avoid Using it , it will break the design flow of the page
+  */
+  position: relative;
+  /* top: 25px;
+  left: 25px; */
+  border: 2px solid blueviolet;
+  background-color: blueviolet;
+}
+
+.absolute {
+  /* 
+    ? Absolute
+   * removes element from the flow
+   * position it relative to parent container
+   * if parent is static, it will move outside of parent container
+   * to the next relative container
+   * if parent is relative , it will move within parent container
+   * can change position using top. bottom left, right and z-index
+   ! not specifying width will make the element shrink to fit the content
+  */
+  position: absolute;
+  top: 25px;
+  left: 25px;
+  border: 2px solid green;
+  background-color: green;
+}
+
+.sticky {
+  /* 
+    ? Sticky
+   * behaves like relative and fixed
+   * relative to the flow
+   * position definition used for when you start scrolling
+   * stay fixed when scrolled at 75px above the div, relative top 75px when stationary
+  */
+  position: sticky;
+  /* top: 75px; */
+  border: 2px solid teal;
+  background-color: teal;
+}
+
+.fixed {
+  /* 
+    ? Fixed
+   *Like absolute
+   * positioned to view port
+   * does not move when scrolling
+   * can change position using top. bottom left, right and z-index
+  */
+  position: fixed;
+  /* /* top: 25px;
+  left: 25px; */
+  border: 2px solid gray;
+  background-color: gray;
+}
