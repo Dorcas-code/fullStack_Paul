@@ -1,0 +1,104 @@
+/* 
+	? Flexbox
+	* module dividing our wireframe
+	* breaks down elements into parent and child container
+	* uses custom properties and values
+	* parents control children
+	* structured using main and cross axes
+*/
+/* ? Variables in CSS */
+:root {
+  --color-primary-white: #ffffff;
+  --color-primary-blue: #4b5694;
+  --color-primary-dark-blue: #111844;
+  --my-favorite-font: Arial, Helvetica, sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+body {
+  font-family: var(--my-favorite-font);
+  background-color: var(--color-primary-dark-blue);
+}
+
+nav {
+  background-color: var(--color-primary-blue);
+
+  display: flex;
+  flex-direction: row;
+  /* ? Adjust where the main axis is */
+  justify-content: center;
+  /* ? Adjust content alongside the main axis */
+  align-items: center;
+  /* ? Adjust content alongside the cross axis */
+  height: 100px;
+  /* padding: 2em; */
+  gap: 1em;
+  /*  ? control space between flex children, similar to padding */
+  /* 
+  *flex-direction: column;
+  *justify-content: center; 
+
+*/
+  /* ! This will note work, as main-axis change to vertical, and height is too small */
+}
+
+#flex-sample {
+  order: 2;
+  /* 
+  !Default order of all other flex children is 0, so this will move the element to the end of the flex children
+  * Need to change value of other flex children to move this element to specific position
+  */
+}
+
+.nav-link {
+  color: var(--color-primary-white);
+  padding: 0.5em;
+  text-decoration: none;
+  order: 5;
+}
+
+/* 
+	? Flexbox Challenge
+	* make the image container a flex container
+	* center the container
+	* center the images
+	* make sure there's a gap of 1em between each image
+*/
+.main-container {
+  display: flex;
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+.img-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+
+  flex-wrap: wrap;
+  gap: 1em;
+  padding: 1em;
+  height: 100vh;
+  align-items: center;
+  /* ?align items on cross axis on individual items */
+  align-content: start;
+  /* ? align items on cross axis on a row of item, when flex-wrap is on */
+  align-content: space-around;
+  /* ? space for multiple children when , flex-wrap is on*/
+}
+
+/* .row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1em;
+} */
+
+.img-item {
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
