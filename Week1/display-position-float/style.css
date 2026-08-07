@@ -121,6 +121,12 @@ body {
   /* *Can set width and height of inline elements */
 }
 
+.float-container {
+  border: 2px solid black;
+  margin-top: 2px;
+  height: 20vh;
+}
+
 .float-box {
   margin: 5px;
   border: 2px solid black;
