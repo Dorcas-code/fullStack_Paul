@@ -120,3 +120,19 @@ body {
   height: 100px;
   /* *Can set width and height of inline elements */
 }
+
+.float-box {
+  margin: 5px;
+  border: 2px solid black;
+  background-color: lightblue;
+  width: 100px;
+  height: 100px;
+
+  /* *Float shifts elements from left to right */
+  float: left;
+}
+
+.box2 {
+  /* *Float shifts elements from left to right */
+  float: right;
+}
