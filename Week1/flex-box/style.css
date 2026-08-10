@@ -51,6 +51,16 @@ nav {
   !Default order of all other flex children is 0, so this will move the element to the end of the flex children
   * Need to change value of other flex children to move this element to specific position
   */
+  flex-grow: 4;
+  /* ? Flex-grow, 
+      *Each element take up space of 1
+      * flex-grow: 4, will take up 4 times the space of other flex children
+     *indivifual elemnet size adjustment  */
+  align-self: flex-start;
+  /* ? Align-self,
+      *Adjusts the position of individual flex children on the cross axis
+      *Overrides the align-items property of the parent container
+  */
 }
 
 .nav-link {
