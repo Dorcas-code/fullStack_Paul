@@ -1,0 +1,93 @@
+/* ? Variables in CSS */
+:root {
+  --color-primary-white: #ffffff;
+  --color-primary-blue: #4b5694;
+  --color-primary-dark-blue: #111844;
+  --my-favorite-font: Arial, Helvetica, sans-serif;
+}
+* {
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+body {
+  font-family: var(--my-favorite-font);
+  background-color: var(--color-primary-dark-blue);
+}
+nav {
+  background-color: var(--color-primary-blue);
+
+  display: flex;
+  flex-direction: row;
+  /* ? Adjust where the main axis is */
+  justify-content: center;
+  /* ? Adjust content alongside the main axis */
+  align-items: center;
+  /* ? Adjust content alongside the cross axis */
+  height: 100px;
+  /* padding: 2em; */
+  gap: 1em;
+  /*  ? control space between flex children, similar to padding */
+  /* 
+  *flex-direction: column;
+  *justify-content: center; 
+
+*/
+  /* ! This will note work, as main-axis change to vertical, and height is too small */
+}
+
+#flex-sample {
+  order: 2;
+  /* 
+  !Default order of all other flex children is 0, so this will move the element to the end of the flex children
+  * Need to change value of other flex children to move this element to specific position
+  */
+}
+
+.nav-link {
+  color: var(--color-primary-white);
+  padding: 0.5em;
+  text-decoration: none;
+  order: 5;
+}
+
+.img-container > img {
+  width: 500px;
+  height: 800px;
+  object-fit: cover;
+}
+.main-container {
+  display: flex;
+  justify-content: center;
+}
+
+/* ?Media Queries */
+/*  *Allow different rulesets to be applied based on screen size */
+/*  *@media print spcifies print rultests */
+/*  *@media screen spcifies screen rultests */
+
+/* ? Three most common screen sizes */
+/* *mobile (767px) */
+/* *tablet (1024px) */
+/* *desktop (above that ) */
+
+@media print {
+  body {
+    background-color: red;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .img-container > img {
+    width: 768px;
+    height: auto;
+  }
+}
+
+@media screen and (max-width: 468px) {
+  .img-container > img {
+    width: 100dvw;
+    /* * dvw = vw excluding scrollbar */
+    height: auto;
+  }
+}
