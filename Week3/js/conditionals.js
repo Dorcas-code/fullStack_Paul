@@ -7,6 +7,11 @@
 /* 
     ? If Statement
     * Check if something is true and executes
+
+    ? Syntax
+     if (condition / expression) {
+        code block to execute if the condition is true
+     }
 */
 
 let lightSwitch = "on";
@@ -127,4 +132,142 @@ if (typeof age !== "number" || typeof country !== "string") {
       console.log("The user is underage");
     }
   }
+}
+
+// ? Error handling example
+
+let email = "example@example.com";
+
+if (!email) {
+  console.log("please enter an email");
+}
+
+/* 
+    ? Ternary Operator
+    * Syntax: condition ? expressionIfTrue : expressionIfFalse
+    * Used for quick checks, popularized within React 
+ */
+
+let speed = 60; // example speed value
+
+if (speed > 60) {
+  console.log("Too fast");
+} else {
+  console.log(`Safe speed is ${speed}`);
+}
+
+// Using ternary operator
+speed > 60 ? console.log("Too fast") : console.log(`Safe speed is ${speed}`);
+// *speed > 60 ? console.log("Too fast")
+// ! SyntaxError - always needs an else statement
+
+// ? Super mini challenge = how could you write a ternary without an else statement then?
+
+speed > 60 ? console.log("First condition") : null;
+// * null means lack of anything
+// * Lil' cheat to bypass the need for an else statement
+
+let myAge = 20;
+
+// * The : becomes an else if instead of an else
+// * multiple consitions that you want to chain
+myAge < 18
+  ? console.log("You are a teenager")
+  : myAge < 21
+    ? console.log("You can trabel but not drink in the US")
+    : myAge >= 21
+      ? console.log("You can drink")
+      : null;
+// * tab for each : is for readability
+
+/* 
+  ? Switch Statement 
+  * Execution of a block dependent of the case
+
+*/
+
+let teacher = "Paul";
+
+switch (teacher) {
+  case "Paul":
+    console.log("Teacher is Paul");
+    break;
+  case "Sarah":
+    console.log("Teacher is Sarah");
+    break;
+  default:
+    console.log("Unknown teacher");
+}
+
+console.log(temp);
+
+switch (true) {
+  case temp >= 80:
+    console.log("It's hot");
+
+  case temp >= 60:
+    console.log("It's warm");
+}
+
+// *Above logs both because we did not use a break statement
+
+/* 
+    ? FizzBuzz Challenge
+    * create a variable called myNumber and assign it to any number
+    * build a condition that checks the following:
+    * if the number is divisible by 3, log "Fizz"
+    * if the number is divisible by 5, log "Buzz",
+    * if the number is divisible by both, log "Fizz Buzz"
+    * if the number is NOT divisible by 3 or 5, log the number
+    * rewrite as a ternary
+    * rewrite as a switch
+*/
+
+let myNumber = 10;
+
+if (myNumber % 3 === 0) {
+  console.log("Fizz");
+} else if (myNumber % 5 === 0) {
+  console.log("Buzz");
+} else if (myNumber % 3 === 0 && myNumber % 5 === 0) {
+  console.log("Fizz Buzz");
+} else {
+  console.log(myNumber);
+}
+
+// ! logic error divisible by both 3 and 5 will not be print
+
+if (myNumber % 15 === 0) {
+  console.log("Fizz Buzz");
+} else if (myNumber % 5 === 0) {
+  console.log("Buzz");
+} else if (myNumber % 3 === 0) {
+  console.log("Fizz");
+} else {
+  console.log(myNumber);
+}
+
+// * Correct example
+// * Write conditions from most to least restrictive
+
+myNumber % 15 === 0
+  ? console.log("Fizz Buzz")
+  : myNumber % 5 === 0
+    ? console.log("Buzz")
+    : myNumber % 3 === 0
+      ? console.log("Fizz")
+      : console.log(myNumber);
+
+switch (myNumber) {
+  case myNumber % 15 === 0:
+    console.log("Fizz Buzz");
+    break;
+  case myNumber % 5 === 0:
+    console.log("Buzz");
+    break;
+  case mmyNumber % 3 === 0:
+    console.log("Fizz");
+    break;
+  default:
+    console.log(myNumber);
 }
