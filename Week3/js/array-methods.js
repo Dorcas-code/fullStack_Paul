@@ -229,3 +229,181 @@ grades.forEach(handleGrades_notLog);
 
 console.log(grades);
 console.log(divideByTwo);
+
+/* 
+  * .map()
+  * same as forEach except one crutial difference
+  * creates a new array with elements returned from the callback fx
+  ! returns for every instances of an iterable
+  ? An iterable is an object you can loop over element by element.
+*/
+
+let statesWithI = state.map((s) => s.toUpperCase());
+// output all states in the array with capital letter
+
+console.log(statesWithI);
+
+console.log(grades.map((i) => i + 10));
+// output: All grades add 10
+
+console.log(
+  grades.map((i) => {
+    if (i < 90) {
+      return i + 10;
+    }
+  }),
+);
+
+//output: contain undefined, because did not set what to return if bigger than 90
+
+console.log(
+  grades.map((i) => {
+    if (i < 90) {
+      return i + 10;
+    } else {
+      return i;
+    }
+  }),
+);
+
+//output: does not contain undefined
+
+// * Can erase else
+// * Using "return early" skill in programming
+
+console.log(
+  grades.map((i) => {
+    // ? Early return Example
+    // ? if condition is true, we will leave the function
+    if (i < 90) {
+      return i + 10;
+    }
+    return i;
+  }),
+);
+
+let ternaryExample = grades.map((i) => (i < 90 ? i + 10 : i));
+console.log(ternaryExample);
+
+/* 
+  ? Challenge: .map()
+  * Rules:
+  * Convert each name to lowercase.
+  * Remove all spaces.
+  * Add "@" to the beginning.
+  
+  * Restrictions:
+    * Do not use a for loop or forEach().
+    * You must use map().
+    * Do not modify the original students array.
+
+*/
+const students = [
+  "Alice Johnson",
+  "Bob Smith",
+  "Charlie Brown",
+  "Diana Prince",
+  "Ethan Hunt",
+  "Fiona Green",
+];
+
+let studentsWithMap = students.map((s) => {
+  let newword = "";
+  for (char of s) {
+    if (char === " ") {
+      char = "";
+    }
+    newword += char;
+  }
+
+  s = "@" + newword.toLowerCase();
+  return s;
+});
+
+c;
+
+console.log(studentsWithMap);
+
+// *Solution by tutor Paul
+
+let usernames = students.map((s) => {
+  "@" + s.toLowerCase().replace(" ", "");
+  return s;
+  // ? Use .replace() which except a regular expression/string with a custom string
+  // ? .replace() replaces part of a string and returns a new string.
+});
+
+let shortCut_usernames = students.map((s) => {
+  return `@${s.toLowerCase().replace(" ", "")}`;
+  // ? Use .replace() which except a regular expression/string with a custom string
+  // ? .replace() replaces part of a string and returns a new string.
+});
+
+/*
+ * .filter()
+ * creates a new array from returned values
+ * only runs on filtered iterables
+ * "which meet the condition
+ * this means it cannot have if/else
+ ! map() will return other things other than elements that meet the condition
+ */
+
+let startsWithI_filter = state.filter((s) => s[0] === "I");
+
+//or
+let startsWithI_filter2 = state.filter((s) => {
+  s.startsWith("I");
+});
+
+let startsWithT2 = state.map((s) => {
+  if (s[0] === "I") {
+    return s;
+  } else {
+    return;
+  }
+});
+
+console.log(startsWithT, startsWithI2);
+
+/* 
+  ? Chanllege
+  * given our array of grades
+  * find passing scores uwing filter method
+  * passing should be 60 and above
+
+*/
+
+let passingGrades = grades.filter((g) => g > 40);
+
+console.log(passingGrades);
+
+/*
+ *.reduce()
+ * adds a reducer callback
+ * can hold value of the prior element
+ * think like a summation keeping track
+ * stores initial value as an accumulator
+ */
+
+let total = 0;
+
+for (i of grades) {
+  total += i;
+}
+
+console.log(total);
+
+let totalGrades = grades.reduce((sum, grade) => {
+  return sum + grade;
+}, 0);
+
+/* 
+ syntax
+
+ arr.reduce((preValue/ accumulator, curValue, index (optional), arr  (optional)) => {
+ }, initialValue (optional))
+  
+ * preValue otherwise known as an accumulator
+*/
+
+console.log(totalGrades);
