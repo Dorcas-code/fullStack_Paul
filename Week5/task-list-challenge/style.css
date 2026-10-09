@@ -1,0 +1,23 @@
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}
+
+/* priority text color */
+
+.normal {
+  color: green;
+}
+
+.important {
+  color: rgb(223, 104, 0);
+}
+
+.urgent {
+  color: red;
+}
+
+.completed {
+  text-decoration: line-through;
+  opacity: 0.5;
+}

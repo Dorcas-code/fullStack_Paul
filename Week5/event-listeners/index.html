@@ -10,6 +10,32 @@
     <nav>
       <button class="screen-mode">Dark Mode</button>
     </nav>
+    <main>
+      <div class="form-wrapper" onsubmit="return false;"></div>
+      <form action="" class="auth-form">
+        <!-- ? onsubmit="return false"  
+             * this line is an inline event listener -->
+        <input
+          type="email"
+          name="email"
+          placeholder="Enter email"
+          class="email"
+        />
+        <input
+          type="password"
+          name="pwd"
+          placeholder="Enter password"
+          class="pwd"
+        />
+        <button type="submit" class="authBtn">Go</button>
+        <div class="output"></div>
+        <!-- 
+            http://127.0.0.1:3000/Week5/event-listeners/index.html?email=&pwd=
+             ? After hit button the url share information! 
+             ? In developer mode > Network's payload will send information
+             -->
+      </form>
+    </main>
     <script src="app.js"></script>
   </body>
 </html>
