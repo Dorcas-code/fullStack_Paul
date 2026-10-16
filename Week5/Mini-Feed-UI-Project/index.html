@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <h1>Mini Feed</h1>
+
+    <div class="task-form">
+      <label for="username">Username:</label>
+      <input
+        id="taskInput"
+        name="username"
+        type="text"
+        placeholder="Enter your username"
+      />
+      <br /><br />
+      <label for="post">Post content:</label>
+      <textarea
+        id="post"
+        name="post"
+        type="text"
+        placeholder="Enter your post"
+      ></textarea>
+      <br /><br />
+      <!--   <select id="priority">
+        <option value="normal">Normal</option>
+        <option value="important">Important</option>
+        <option value="urgent">Urgent</option>
+      </select> -->
+
+      <button id="addBtn">Submit</button>
+      <button id="sortLike_Btn">Sort by Like</button>
+      <button id="sortName_Btn">Sort by Username</button>
+      <br />
+      <br />
+    </div>
+
+    <p id="taskCount">0 feed</p>
+
+    <div id="taskList" class="container"></div>
+    <script src="app.js"></script>
+  </body>
+</html>
