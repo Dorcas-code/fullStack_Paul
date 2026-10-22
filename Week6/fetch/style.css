@@ -1,0 +1,21 @@
+body {
+  background-color: #ececec;
+  color: dar;
+}
+
+header {
+  display: block;
+  justify-content: stretch;
+  flex-direction: row;
+}
+
+main {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.item-container {
+  max-width: 300px;
+  min-width: 300px;
+}
