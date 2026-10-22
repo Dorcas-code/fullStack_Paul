@@ -124,6 +124,13 @@ function render(data) {
   });
 }
 
+function handleError(err) {
+  console.error(err);
+  let error_container = document.querySelector(".error-panel");
+  error_container.style.display = "block";
+  error_container.lastElementChild.textContent = err.message;
+}
+
 let getData = async () => {
   try {
     let res = await fetch(url);
@@ -138,7 +145,7 @@ let getData = async () => {
     render(parsed_data);
     return parsed_data;
   } catch (err) {
-    console.log(err);
+    handleError(err);
   }
 };
 getData();
