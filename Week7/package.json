@@ -1,0 +1,12 @@
+{
+  "name": "intro-to-express",
+  "version": "1.0.0",
+  "description": "Intro to Express Lesson",
+  "license": "ISC",
+  "author": "Dorcas",
+  "type": "commonjs",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
