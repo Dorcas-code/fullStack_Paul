@@ -4,10 +4,14 @@
 - dependency step
 	- `npm i express` to install express
 	- `npm i nodemon --save-dev` to install Nodemon
-	- `--save-dev` flag allows us to install things that won't make it to prod version
+	- `--save-dev` flag allows us to install things that won't make it to prod version, this is not for prod, only run it in dev environment
 	- create the following scripts:
 		- `"start": "node app.js"` - starts our app via project
 		- `"dev": "nodemon"` - starts app via development mode
+		- `  "devDependencies": {
+    "nodemon": "^3.1.14"
+  } ` it live inside devDependencies , not dependencies
+  - `nodemon` is for live preview in development environment
 - to start the server, run `npm run dev`
 
 # Files and Meanings
