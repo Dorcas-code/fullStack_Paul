@@ -1,0 +1,2 @@
+- within project folder:
+- use `npm init` or ` npm init -y` to create a preoject
