@@ -25,7 +25,7 @@
 
 # HTTP Protocol & RESTful Architecture
 
-- The client communicates with the serrver using HTTP protocol
+- The client communicates with the server using HTTP protocol
 - Done using Representation State Transfer (REST)
 - Client sends a request
 - Server receives the request and returns a response to the client
@@ -38,7 +38,7 @@ A route or endpoint is simply a sport after the socket where a request can be se
 (1).    (2).  (3). (4).  (5). (6). (7). 
 https://www.google.com/search?q=mySearchQuery
 
-1. protocol (http & https) (:80 or :443)
+1. protocol (http & https) ( use port :80 or :443)
 2. naked vs root domain (we can also have subdomains: mail.google.com)
 3. domain
 4. top level domain
