@@ -1,6 +1,7 @@
 # Starting a server
 - within project folder:
 - use `npm init` or `npm init -y` to create a project
+	- `npm init -y` means dun ask question, just give you a boilerplate one
 - dependency step
 	- `npm i express` to install express
 	- `npm i nodemon --save-dev` to install Nodemon
