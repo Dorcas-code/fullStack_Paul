@@ -81,4 +81,4 @@ Anytime we hit a method, it's for a specific purpose
 
 Response specific:
 - Status Code - health of our req/res (200, 201, 403, 404, 500 and so on)
-- Payload - the goodies
+- Payload - the goodies, usually string or HTML

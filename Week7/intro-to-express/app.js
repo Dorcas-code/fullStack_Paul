@@ -12,10 +12,21 @@ const HOST = "127.0.01";
 app.listen(PORT , HOST, () => {
     console.log(`server is runing on ${HOST}:${PORT}`)
 })
+// A server need to listen to http request that is coming in
+// IP address is the address of the computer
+// PORT is door for message to come in
 
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
-// A server need to listen to http request that is coming in
-// IP address is the address of the computer
-// PORT is door for message to come in
+
+
+app.get('/health', (req, res) => {
+  res.status(200).send('Server is up and running!')
+})
+// HTTP methods allow us to define what we're doing with the data when we hit that route. 
+//.get() is a method that handle a get request for us
+//. create a route that we can listen on
+// call back function to send response 
+// HTTP verbs remembering https://http.cat/
+// HTTP requests what we do with theat 
