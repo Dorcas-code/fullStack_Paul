@@ -16,10 +16,14 @@ const app = express()
 const PORT = process.env.PORT
 const HOST = process.env.HOST
 
+// import our exports
+const routes = require("./controllers/routes");
+
+
 app.listen(PORT, HOST, ()=>{
     console.log(`server is runing on ${HOST}:${PORT}`)
 })
-
+console.log(routes)
 /* 
     ? Model View Controller Arhitecture (MVC)
     * a way to architect your application
@@ -37,4 +41,4 @@ app.listen(PORT, HOST, ()=>{
 */
 
 
-console.log(process.env)
+/* console.log(process.env) */

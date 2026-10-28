@@ -13,3 +13,13 @@
 
 //import express and invoke its router interfacce
 const router =  require("express").Router()
+
+router.get("/health", (req, res) =>{
+    res.status(200).json({
+        message: "ther server is up and running"
+    })
+})
+
+//exprts all modified content of the object to access elsewhere
+module.exports = router
+// * For this to work need to import it to app.js
