@@ -18,12 +18,39 @@ const HOST = process.env.HOST
 
 // import our exports
 const routes = require("./controllers/routes");
+const timestamps = require("./helpers/timestamp");
 
+/* 
+    ? Middleware
+    * a function that can do anything
+    * has access to request
+    * has access to response
+    * has access to the next function in the call stack
+    * if we don't next(), we'restopped
+    * Request → Middleware(s) → Controller → Response (through middleware) → Client
+*/
 
-app.listen(PORT, HOST, ()=>{
+// ? Better Middleware Example (Not built in)
+/* function timestamp(req, res, next) {
+    res.date = new Date().toLocaleTimeString()
+    console.log(res.date)
+    //next() - allow us to continue down the call stack
+    next()
+} */
+
+app.use(timestamps)
+/* console.log(timestamp()) */
+// how to make it everytime somebody hit a route
+
+// * .use() is a middleware
+// * .use() calls what is in the routes 
+// * .use() handler for the middleware
+app.use(routes);
+
+app.listen(PORT, HOST, () => {
     console.log(`server is runing on ${HOST}:${PORT}`)
 })
-console.log(routes)
+/* console.log(routes) */
 /* 
     ? Model View Controller Arhitecture (MVC)
     * a way to architect your application
