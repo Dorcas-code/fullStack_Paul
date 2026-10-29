@@ -38,14 +38,18 @@ const timestamps = require("./helpers/timestamp");
     next()
 } */
 
+// * this middleware json-ifies our incoming requests to get the body 
+app.use(express.json())
 app.use(timestamps)
+app.use("/securityissue", express.static(`${__dirname}/public`))
+app.use(routes)
 /* console.log(timestamp()) */
 // how to make it everytime somebody hit a route
 
 // * .use() is a middleware
 // * .use() calls what is in the routes 
 // * .use() handler for the middleware
-app.use(routes);
+
 
 app.listen(PORT, HOST, () => {
     console.log(`server is runing on ${HOST}:${PORT}`)
