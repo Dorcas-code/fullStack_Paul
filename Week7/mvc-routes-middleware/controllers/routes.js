@@ -127,7 +127,7 @@ name=DD&age=20&email=abc@hjdf. : query param
 // * anything after /:id is a variable
 // * which means /anything
 //  * example : https://github.com/mrpndev/fs11-mvc-controllers-routes
-router.get("/:id", (req, res) => {
+/* router.get("/:id", (req, res) => {
     console.log(req.params)
     // ? id becomes a variable in the world of endpoints
     console.log("This is your params objects", req.params)
@@ -141,24 +141,20 @@ router.get("/:id", (req, res) => {
         message: `Reached ${req.method} route`,
         id
     })
-})
+}) */
 
 
-//request : http://127.0.0.1:4000/potato
-//response: {
-/* "message": "Reached GET route",
-    "id": "potato"
-} */
+
 
 /*
   ! this URL will never be reached
   
 */
-router.get("/:user", (req, res) => {
+/* router.get("/:user", (req, res) => {
     // just a "/" endpoint
     // anything after : becomes a variable
     console.log("User endpoint reacher")
-})
+}) */
 
 router.get("/users/:user", (req, res) => {
     // just a "/" endpoint
@@ -180,6 +176,8 @@ username: 'mrpndev',
     repo: 'fs11-mvc-controllers-routes'
 } */
 
+
+
 /*
 ? Challenge
 * Economics of Countries API
@@ -198,3 +196,281 @@ username: 'mrpndev',
         * DELETE /:id to delete a country
 ! test every route in postman
 */
+const countries = [
+    "Afghanistan",
+    "Albania",
+    "Algeria",
+    "Andorra",
+    "Angola",
+    "Antigua and Barbuda",
+    "Argentina",
+    "Armenia",
+    "Australia",
+    "Austria",
+    "Austrian Empire",
+    "Azerbaijan",
+    "Baden",
+    "Bahamas, The",
+    "Bahrain",
+    "Bangladesh",
+    "Barbados",
+    "Bavaria",
+    "Belarus",
+    "Belgium",
+    "Belize",
+    "Benin (Dahomey)",
+    "Bolivia",
+    "Bosnia and Herzegovina",
+    "Botswana",
+    "Brazil",
+    "Brunei",
+    "Brunswick and Lüneburg",
+    "Bulgaria",
+    "Burkina Faso (Upper Volta)",
+    "Burma",
+    "Burundi",
+    "Cabo Verde",
+    "Cambodia",
+    "Cameroon",
+    "Canada",
+    "Cayman Islands, The",
+    "Central African Republic",
+    "Central American Federation",
+    "Chad",
+    "Chile",
+    "China",
+    "Colombia",
+    "Comoros",
+    "Congo Free State, The",
+    "Cook Islands",
+    "Costa Rica",
+    "Cote d’Ivoire (Ivory Coast)",
+    "Croatia",
+    "Cuba",
+    "Cyprus",
+    "Czechia",
+    "Czechoslovakia",
+    "Democratic Republic of the Congo",
+    "Denmark",
+    "Djibouti",
+    "Dominica",
+    "Dominican Republic",
+    "Duchy of Parma",
+    "East Germany (German Democratic Republic)",
+    "Ecuador",
+    "Egypt",
+    "El Salvador",
+    "Equatorial Guinea",
+    "Eritrea",
+    "Estonia",
+    "Eswatini",
+    "Ethiopia",
+    "Federal Government of Germany",
+    "Fiji",
+    "Finland",
+    "France",
+    "Gabon",
+    "Gambia, The",
+    "Georgia",
+    "Germany",
+    "Ghana",
+    "Grand Duchy of Tuscany, The*",
+    "Greece",
+    "Grenada",
+    "Guatemala",
+    "Guinea",
+    "Guinea-Bissau",
+    "Guyana",
+    "Haiti",
+    "Hanover",
+    "Hanseatic Republics",
+    "Hawaii",
+    "Hesse",
+    "Holy See",
+    "Honduras",
+    "Hungary",
+    "Iceland",
+    "India",
+    "Indonesia",
+    "Iran",
+    "Iraq",
+    "Ireland",
+    "Israel",
+    "Italy",
+    "Jamaica",
+    "Japan",
+    "Jordan",
+    "Kazakhstan",
+    "Kenya",
+    "Kingdom of Serbia/Yugoslavia",
+    "Kiribati",
+    "Korea",
+    "Kosovo",
+    "Kuwait",
+    "Kyrgyzstan",
+    "Laos",
+    "Latvia",
+    "Lebanon",
+    "Lesotho",
+    "Lew Chew (Loochoo)",
+    "Liberia",
+    "Libya",
+    "Liechtenstein",
+    "Lithuania",
+    "Luxembourg",
+    "Madagascar",
+    "Malawi",
+    "Malaysia",
+    "Maldives",
+    "Mali",
+    "Malta",
+    "Marshall Islands",
+    "Mauritania",
+    "Mauritius",
+    "Mecklenburg-Schwerin",
+    "Mecklenburg-Strelitz",
+    "Mexico",
+    "Micronesia",
+    "Moldova",
+    "Monaco",
+    "Mongolia",
+    "Montenegro",
+    "Morocco",
+    "Mozambique",
+    "Namibia",
+    "Nassau",
+    "Nauru",
+    "Nepal",
+    "Netherlands, The",
+    "New Zealand",
+    "Nicaragua",
+    "Niger",
+    "Nigeria",
+    "Niue",
+    "North German Confederation",
+    "North German Union",
+    "North Macedonia",
+    "Norway",
+    "Oldenburg",
+    "Oman",
+    "Orange Free State",
+    "Pakistan",
+    "Palau",
+    "Panama",
+    "Papal States",
+    "Papua New Guinea",
+    "Paraguay",
+    "Peru",
+    "Philippines",
+    "Piedmont-Sardinia",
+    "Poland",
+    "Portugal",
+    "Qatar",
+    "Republic of Genoa",
+    "Republic of Korea (South Korea)",
+    "Republic of the Congo",
+    "Romania",
+    "Russia",
+    "Rwanda",
+    "Saint Kitts and Nevis",
+    "Saint Lucia",
+    "Saint Vincent and the Grenadines",
+    "Samoa",
+    "San Marino",
+    "Sao Tome and Principe",
+    "Saudi Arabia",
+    "Schaumburg-Lippe",
+    "Senegal",
+    "Serbia",
+    "Seychelles",
+    "Sierra Leone",
+    "Singapore",
+    "Slovakia",
+    "Slovenia",
+    "Solomon Islands, The",
+    "Somalia",
+    "South Africa",
+    "South Sudan",
+    "Spain",
+    "Sri Lanka",
+    "Sudan",
+    "Suriname",
+    "Sweden",
+    "Switzerland",
+    "Syria",
+    "Tajikistan",
+    "Tanzania",
+    "Texas",
+    "Thailand",
+    "Timor-Leste",
+    "Togo",
+    "Tonga",
+    "Trinidad and Tobago",
+    "Tunisia",
+    "Turkey",
+    "Turkmenistan",
+    "Tuvalu",
+    "Two Sicilies",
+    "Uganda",
+    "Ukraine",
+    "Union of Soviet Socialist Republics",
+    "United Arab Emirates, The",
+    "United Kingdom, The",
+    "Uruguay",
+    "Uzbekistan",
+    "Vanuatu",
+    "Venezuela",
+    "Vietnam",
+    "Württemberg",
+    "Yemen",
+    "Zambia",
+    "Zimbabwe"
+];
+router.get("/countries", (req, res) => {
+    /*     console.log(req); */
+    res.status(200).json({
+        countries: countries
+    })
+})
+
+
+router.post("/countries", (req, res) => {
+
+    countries.push(req.body.countries);
+    res.status(201).json(countries);
+
+})
+
+router.get("/countries/:country", (req, res) => {
+    console.log(req.params)
+    // ? id becomes a variable in the world of endpoints
+    console.log("This is your params objects", req.params)
+    console.log("This is your params object value", req.params.id)
+
+    // Object destructuring
+    let { country } = req.params
+    console.log(country)
+
+    res.status(200).json({
+        message: `Reached ${req.method} route`,
+        country
+    })
+})
+
+router.put("/countries/:country", (req, res) => {
+    let update_country_name = req.body.country.lowercase()
+    if (countries.includes(update_country_name)) {
+        const i = countries.indexOf(update_country_name);
+        countries[i] = update_country_name;
+    }
+    res.status(200).json({
+        countries
+    })
+
+})
+
+router.delete("/", (req, res) => {
+    res.status(200).json({
+        message: `You hit the ${req.method} route`
+    })
+})
