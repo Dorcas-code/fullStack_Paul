@@ -29,7 +29,7 @@ const corsOptions = {
     // ? Only localhost with port 4000 is allow to access the api 
     // * origin: * anyone can get access to the API
     // * Can be viewed with header :access-control in
-    "methods": "POST"
+    /*   "methods": "POST" */
     // ? ONly accept POST request
 }
 
