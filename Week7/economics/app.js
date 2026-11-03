@@ -24,7 +24,12 @@ app.listen(PORT, HOST, () => {
 */
 
 const corsOptions = {
-    origin: "localhost:5100"
+    "origin": "http://127.0.0.1:4000/",
+    // ? Only localhost with port 4000 is allow to access the api 
+    // * origin: * anyone can get access to the API
+    // * Can be viewed with header :access-control in
+    "methods": "POST"
+    // ? ONly accept POST request
 }
 
 // ? 1. jsonify the body 2. go to authRoutes 3. go to routes 
@@ -41,4 +46,8 @@ app.use(errorHandler)
   * Cross Origin Resources Sharing
   * Security System for permission between client and server
   * works by modifying the headers for request and response
-*/
+  * CORS is not access contol!! this would require its own mechanism
+  * CORS is anforced by web browsers only, not by express server
+  * authenication & authorization is not CORS
+  ! Prevent other domain or port to steal info from your api (But only error on console)
+  */
