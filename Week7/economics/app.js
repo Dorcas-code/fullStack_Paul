@@ -10,7 +10,7 @@ const HOST = process.env.HOST;
 const authRoutes = require("./controllers/auth");
 const routes = require("./controllers/routes");
 const errorHandler = require("./helpers/errorHandler")
-
+const headers = require("./middlewares/headers")
 app.listen(PORT, HOST, () => {
     console.log(`server is runing on ${HOST}:${PORT}`)
 })
@@ -34,9 +34,9 @@ const corsOptions = {
 
 // ? 1. jsonify the body 2. go to authRoutes 3. go to routes 
 app.use(express.json())
-app.use(cors(corsOptions))
+/* app.use(cors(corsOptions)) */
 // we add the cors on top of all other middleware
-
+app.use(headers)
 app.use(authRoutes)
 app.use(routes)
 app.use(errorHandler)
