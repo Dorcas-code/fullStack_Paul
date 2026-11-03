@@ -1,8 +1,9 @@
-function errorHandler(res, error) {
+function errorHandler(error, req, res, next) {
     console.error(error)
-    console.log(res)
+
     res.status(500).json({
-        message: error
+        message: "Internal Error Occured"
     })
+
 }
 module.exports = errorHandler
