@@ -15,6 +15,7 @@ router.post("/issues", (req, res) => {
     /*     try { */
     console.log("response succuess", req.body)
     issues.push(req.body)
+    req.body.id = (issues.length - 1) + 1
     res.status(201).json({
         message: `${req.method} ${res.originalUrl} route`,
         issues
@@ -44,4 +45,23 @@ router.get("/issues/:id", (req, res) => {
     })
 })
 
+router.put("/issues/:id", (req, res) => {
+    let { id } = req.params;
+    id = Number(id);
+    let update_issue_title = req.body.title
+    let issue = issues.find(i => i.id === id)
+    console.log("issue found on put", issue)
+    console.log("issue id on put", id)
+    if (issue) {
+
+        issue.title = update_issue_title;
+        res.status(200).json({
+            issues
+        })
+    } else {
+        return res.status(404).json({ error: 'Issue not found' });
+    }
+
+
+})
 module.exports = router
