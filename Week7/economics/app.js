@@ -7,9 +7,9 @@ const cors = require("cors")
 
 const PORT = process.env.PORT;
 const HOST = process.env.HOST;
-const authRoutes = require("./controllers/auth");
-const routes = require("./controllers/routes");
-const errorHandler = require("./helpers/errorHandler")
+const authRoutes = require("./controllers/auth.controller");
+const routes = require("./controllers/routes.controller");
+const errorHandler = require("./middlewares/errorHandler")
 const headers = require("./middlewares/headers")
 const rateLimiter = require("./middlewares/ratelimiter")
 app.listen(PORT, HOST, () => {

@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const errorHandler = require("../helpers/errorHandler")
+const errorHandler = require("../middlewares/errorHandler")
 const authValidator = require("../validators/registrationValidatior")
 router.post("/register", authValidator, (req, res) => {
     /*  let keys = Object.keys(req.body); */
