@@ -9,7 +9,7 @@ function validateIssue(req, res, next) {
 
             // * res.status is sending status 400 
             return res.status(400).json({
-                message: "Tittle , description required"
+                message: "Title , description required"
             })
             // * early return so not send two response at once (400 and 201)
         }

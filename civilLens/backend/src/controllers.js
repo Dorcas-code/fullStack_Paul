@@ -14,6 +14,7 @@ function createIssue(req, res) {
     console.log("response succuess", req.body)
     issues.push(req.body)
     req.body.id = (issues.length - 1) + 1
+    req.body.createdAt = new Date().toISOString()
     res.status(201).json({
         message: `${req.method} ${res.originalUrl} route`,
         issues
