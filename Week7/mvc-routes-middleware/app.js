@@ -26,7 +26,7 @@ const timestamps = require("./helpers/timestamp");
     * has access to request
     * has access to response
     * has access to the next function in the call stack
-    * if we don't next(), we'restopped
+    * if we don't next(), we're stopped
     * Request → Middleware(s) → Controller → Response (through middleware) → Client
 */
 
