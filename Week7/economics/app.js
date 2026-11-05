@@ -7,11 +7,13 @@ const cors = require("cors")
 
 const PORT = process.env.PORT;
 const HOST = process.env.HOST;
-const authRoutes = require("./controllers/auth.controller");
-const routes = require("./controllers/api.controller");
+/* const authRoutes = require("./controllers/auth.controller"); */
+const authRoutes = require("./routes/auth.routes");
+const apiRoutes = require("./routes/api.routes");
 const errorHandler = require("./middlewares/errorHandler")
 const headers = require("./middlewares/headers")
 const rateLimiter = require("./middlewares/ratelimiter")
+
 app.listen(PORT, HOST, () => {
     console.log(`server is runing on ${HOST}:${PORT}`)
 })
@@ -34,13 +36,18 @@ const corsOptions = {
 }
 
 // ? 1. jsonify the body 2. go to authRoutes 3. go to routes 
-app.use(rateLimiter)
+/* app.use(rateLimiter) */
 app.use(express.json())
 /* app.use(cors(corsOptions)) */
 // we add the cors on top of all other middleware
 app.use(headers)
+
+
 app.use(authRoutes)
-app.use(routes)
+app.use(apiRoutes)
+app.use((req, res) => {
+    res.status(404).sendFile(`${__dirname}/public/index.html`)
+})
 app.use(errorHandler)
 
 /* 

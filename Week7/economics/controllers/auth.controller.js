@@ -1,7 +1,4 @@
-const router = require("express").Router()
-const errorHandler = require("../middlewares/errorHandler")
-const authValidator = require("../validators/registrationValidatior")
-router.post("/register", authValidator, (req, res) => {
+let registerUser = (req, res) => {
     /*  let keys = Object.keys(req.body); */
 
     /*    try { */
@@ -16,16 +13,12 @@ router.post("/register", authValidator, (req, res) => {
           errorHandler(res, error)
           // * much cleaner use helper functions
       } */
-})
+}
 
-/* 
-! if response has X-powered-By: express, there is security risk that hacker know which server you are using  */
-
-router.post("/login", (req, res) => {
-
+let loginUser = (req, res) => {
     /*    try { */
     /*  let keys = Object.keys(req.body); */
-    console.log(keys)
+
     /*     console.log(req.body) */
 
 
@@ -36,7 +29,6 @@ router.post("/login", (req, res) => {
     /* } catch (error) {
         errorHandler(res, error)
     } */
-})
+}
 
-
-module.exports = router
+module.exports = { registerUser, loginUser }
