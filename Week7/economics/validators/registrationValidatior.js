@@ -1,15 +1,15 @@
 function validateRegistraion(req, res, next) {
 
     if (req.url === "/register") {
-        let { username, password, email } = req.body
+        let { full_name, password, email } = req.body
 
         // ? Validation
-        if (!username || !password || !email) {
+        if (!full_name || !password || !email) {
 
 
             // * res.status is sending status 400 
             return res.status(400).json({
-                message: "Username, password required"
+                message: "full_name, password required"
             })
             // * early return so not send two response at once (400 and 201)
         }

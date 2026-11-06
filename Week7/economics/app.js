@@ -13,9 +13,23 @@ const apiRoutes = require("./routes/api.routes");
 const errorHandler = require("./middlewares/errorHandler")
 const headers = require("./middlewares/headers")
 const rateLimiter = require("./middlewares/ratelimiter")
+const { db } = require("./db")
 
-app.listen(PORT, HOST, () => {
-    console.log(`server is runing on ${HOST}:${PORT}`)
+app.listen(PORT, HOST, async () => {
+
+    try {
+        //estaclish connectionto existing database
+        await db.authenticate()
+
+        //syncs all of our schemas (structure) to the database
+        await db.sync({ force: false })
+        console.log(`server is runing on ${HOST}:${PORT}`)
+        console.log(`[databse] is runing `)
+    } catch (err) {
+        console.log("error:", err)
+        // ! if this console.log is commented
+        // we cannot see error at all , like it is running fine 
+    }
 })
 
 /* 
