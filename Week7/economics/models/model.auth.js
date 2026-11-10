@@ -23,18 +23,19 @@ const User = db.define("user", {
         validate: {
             is: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
         },
-        password: {
-            type: DataTypes.STRING,
-            allowNull: false,
-            validate: {
-                min: 10
-            }
-        }
     },
+    password: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            min: 10
+        }
+    }
+},
 
 
-}, {
-    timestamps: true
-})
+    {
+        timestamps: true
+    })
 
 module.exports = { User }
