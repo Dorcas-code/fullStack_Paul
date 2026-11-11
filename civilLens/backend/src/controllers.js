@@ -5,7 +5,7 @@ const { Sequelize } = require("../db");
 let getAllIssues = async (req, res) => {
     try {
         const issues = await Issues.findAll();
-        res.status(200).json({ issues });
+        res.status(200).json({ message: "Load all issues", issues });
     } catch (error) {
         console.error("Database error:", error.original?.message || error.message);
         res.status(500).json({ message: "Could not load issues" });
