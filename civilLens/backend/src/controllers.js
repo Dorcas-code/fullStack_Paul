@@ -1,11 +1,15 @@
-let issues = []
+const { Issues } = require("./models/issues.model");
+const { Sequelize } = require("../db");
+/* let issues = [] */
 
-function getAllIssues(req, res) {
-
-    res.status(200).json({
-        message: `${req.method} ${res.originalUrl} route`,
-        issues
-    })
+let getAllIssues = async (req, res) => {
+    try {
+        const issues = await Issues.findAll();
+        res.status(200).json({ issues });
+    } catch (error) {
+        console.error("Database error:", error.original?.message || error.message);
+        res.status(500).json({ message: "Could not load issues" });
+    }
 
 }
 
