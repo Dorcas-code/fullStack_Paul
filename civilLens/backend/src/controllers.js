@@ -13,15 +13,22 @@ let getAllIssues = async (req, res) => {
 
 }
 
-function createIssue(req, res) {
+let createIssue = async (req, res) => {
 
     console.log("response succuess", req.body)
-    issues.push(req.body)
-    req.body.id = (issues.length - 1) + 1
-    req.body.createdAt = new Date().toISOString()
+    let add_issueData = await Issues.create({
+        title: req.body.title,
+        description: req.body.description,
+        votes: req.body.votes,
+
+    })
+
+    /*  issues.push(req.body)
+     req.body.id = (issues.length - 1) + 1
+     req.body.createdAt = new Date().toISOString() */
     res.status(201).json({
-        message: `${req.method} ${res.originalUrl} route`,
-        issues
+        message: `${req.method} ${req.originalUrl} route`,
+        add_issueData
     })
 
 }
