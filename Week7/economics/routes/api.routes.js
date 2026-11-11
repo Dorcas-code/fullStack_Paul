@@ -12,15 +12,15 @@ router.get("/all",
     getAll
 )
 
-router.get("/:country",
+router.get("/country/:country",
     getByCountry
 )
 
-router.put("/:id",
+router.put("/country/:id",
     updateById
 )
 
-router.delete("/:id",
+router.delete("/country/:id",
     deleteById
 
 )
