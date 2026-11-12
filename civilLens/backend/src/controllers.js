@@ -33,24 +33,23 @@ let createIssue = async (req, res) => {
 
 }
 
-function getIssueById(req, res) {
-
-    console.log(req.params)
+let getIssueById = async (req, res) => {
+    let { id } = req.params;
+    console.log(id)
     // ? id becomes a variable in the world of endpoints
-    console.log("This is your params objects", req.params)
-    console.log("This is your params object value", req.params.id)
+
 
     // Object destructuring
-    let { id } = req.params
-    id = Number(id)
-    const issue = issues.find(i => i.id === id);
-    console.log(id)
-    if (!issue) {
-        return res.status(404).json({ error: 'Issue not found' });
+
+    let foundIssue = await Issues.findByPk(id);
+    if (!foundIssue) {
+        res.status(200).json({
+            message: `issue ${id} not found`
+        })
     }
     res.status(200).json({
         message: `Reached ${req.method} route , here is your issue`,
-        issue
+        foundIssue
     })
 
 }
