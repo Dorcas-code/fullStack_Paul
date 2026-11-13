@@ -1,5 +1,6 @@
 const router = require("express").Router()
 const { getAllIssues, createIssue, getIssueById, updateIssue, deleteIssue } = require('./controllers');
+const { registerUser, loginUser, resetPassword } = require("./auth_controllers")
 const validateIssue = require("./middleware")
 
 /* let issues = [] */
@@ -13,5 +14,10 @@ router.get("/issues/:id", getIssueById)
 router.put("/issues/:id", updateIssue)
 
 router.delete("/issues/:id", deleteIssue)
+
+router.post("/register", registerUser)
+
+
+router.post("/login", loginUser)
 
 module.exports = router
