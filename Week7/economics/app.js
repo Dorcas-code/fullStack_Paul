@@ -14,6 +14,7 @@ const errorHandler = require("./middlewares/errorHandler")
 const headers = require("./middlewares/headers")
 const rateLimiter = require("./middlewares/ratelimiter")
 const { db } = require("./db")
+const validateRoutes = require("./middlewares/validate")
 
 app.listen(PORT, HOST, async () => {
 
@@ -58,7 +59,7 @@ app.use(headers)
 
 
 app.use(authRoutes)
-app.use(apiRoutes)
+app.use(validateRoutes, apiRoutes)
 app.use((req, res) => {
     res.status(404).sendFile(`${__dirname}/public/index.html`)
 })

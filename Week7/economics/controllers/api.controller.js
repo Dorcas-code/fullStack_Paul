@@ -2,6 +2,7 @@ const { Country } = require("../models/api.model");
 const { Sequelize } = require("../db");
 /* let db = [] */
 let getAll = async (req, res) => {
+    console.log(req.headers)
     let foundCountries = await Country.findAll();
     res.status(200).json({
         message: `${req.method} ${res.originalUrl} route`,
