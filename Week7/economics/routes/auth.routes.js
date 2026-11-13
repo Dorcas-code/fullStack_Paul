@@ -1,5 +1,5 @@
 const router = require("express").Router()
-const { registerUser, loginUser } = require("../controllers/auth.controller")
+const { registerUser, loginUser, resetPassword } = require("../controllers/auth.controller")
 const errorHandler = require("../middlewares/errorHandler")
 const authValidator = require("../validators/registrationValidatior")
 router.post("/register", authValidator, registerUser)
@@ -9,5 +9,5 @@ router.post("/register", authValidator, registerUser)
 
 router.post("/login", loginUser)
 
-
+router.put("/resetpassword", resetPassword)
 module.exports = router

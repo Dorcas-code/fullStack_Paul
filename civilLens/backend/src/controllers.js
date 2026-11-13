@@ -54,22 +54,37 @@ let getIssueById = async (req, res) => {
 
 }
 
-function updateIssue(req, res) {
+let updateIssue = async (req, res) => {
     let { id } = req.params;
-    id = Number(id);
-    let update_issue_title = req.body.title
-    let issue = issues.find(i => i.id === id)
-    console.log("issue found on put", issue)
-    console.log("issue id on put", id)
-    if (issue) {
 
-        issue.title = update_issue_title;
-        res.status(200).json({
-            issues
-        })
-    } else {
-        return res.status(404).json({ error: 'Issue not found' });
+
+    let foundIssue = await Issues.findByPk(id);
+
+
+    let updatedIssue = {
+        // ?  Nullish coalescing operator */
+        // * if it is null keep it as it is (Right hand side)
+        //  * if it is not null , use the value in the req.body.country
+        // * avoid have to update un wanted data
+        title: req.body.title ?? title,
+        description: req.body.description ?? description,
+        category: req.body.category ?? category,
+
+        votes: req.body.votes ?? votes
     }
+
+
+    foundIssue.update(updatedIssue)
+    if (!foundIssue) {
+        res.status(200).json({
+            message: `issue ${id} not found`
+        })
+    }
+    res.status(200).json({
+        message: `${req.method} ${req.originalUrl} route , Issue updated`,
+        updatedIssue
+
+    })
 }
 
 function deleteIssue(req, res) {
