@@ -31,7 +31,7 @@ const User = db.define("user", {
 
 
     {
-        timestamps: true
+        timestamps: false
     })
 
 module.exports = { User }
