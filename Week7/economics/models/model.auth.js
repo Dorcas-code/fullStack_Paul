@@ -30,12 +30,21 @@ const User = db.define("user", {
         validate: {
             min: 10
         }
+    },
+    role: {
+
+        type: DataTypes.ENUM(
+            "viewer",
+            "editor",
+            "admin"
+        ),
+        allowNull: false,
+        defaultValue: "viewer"
     }
 },
-
-
     {
         timestamps: true
-    })
+    }
+)
 
 module.exports = { User }

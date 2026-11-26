@@ -38,9 +38,12 @@ module.exports = {
     ? How to
     * npm i sequelize-cli --save-dev
     * create a script in your package.json
-    * * name your migration
+    * run command, then name your migration
+    * initialize your cli by running sequelize-cli init
+    * configure your config.json with db credentials
     * this will generate a migration file (this one)
     * build up() function to push it to db
     * build down() function to revert the change
     * run migrate function
+    * update the model as well
 */

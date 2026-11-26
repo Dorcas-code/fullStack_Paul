@@ -7,6 +7,7 @@
 */
 const jwt = require("jsonwebtoken")
 const JWT_KEY = process.env.JWT_KEY
+const { User } = require("../models/model.auth")
 
 let validateSession = (req, res, next) => {
     // ? preflight request - checks what's allowed by the server
@@ -32,15 +33,27 @@ let validateSession = (req, res, next) => {
 
     // ? jwt verifies if token generated using our key
 
-    const payload = jwt.verify(authToken, JWT_KEY, (err, payload) => {
+    const payload = jwt.verify(authToken, JWT_KEY, async (err, payload) => {
         if (err) {
             console.log(err)
             res.status(403).json({
 
                 message: "Forbidden"
             })
+        } else {
+            console.log(payload, JWT_KEY)
         }
+        // ? Safer than trusting the request
+        // ? Comes from database and can be validated      
+
+
+        /*   let user = await User.findByPk(payload.id)
+  
+          req.user = user
+          console.log(req.user) */
         req.user = payload
+        console.log("OUR REQUEST GOING THRU VALIDATOR NOW", payload)
+        /*  // original req.user = payload */
 
         next()
 

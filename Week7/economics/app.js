@@ -19,11 +19,12 @@ const validateRoutes = require("./middlewares/validate")
 app.listen(PORT, HOST, async () => {
 
     try {
-        //estaclish connectionto existing database
+        //establish connection to existing database
         await db.authenticate()
 
         //syncs all of our schemas (structure) to the database
-        await db.sync({ force: false })
+        // * get rid of {force:false} to let migration handles schema changes
+        /* await db.sync({ force: false }) */
         console.log(`server is runing on ${HOST}:${PORT}`)
         console.log(`[databse] is runing `)
     } catch (err) {
