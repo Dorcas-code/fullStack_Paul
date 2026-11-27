@@ -12,7 +12,7 @@ const JWT_KEY = process.env.JWT_KEY
 const SALT = Number(process.env.SALT)
 
 let registerUser = async (req, res) => {
-    console.log(req.body)
+
     let { full_name, email, password } = req.body
 
     let newUser = await User.create({
@@ -24,7 +24,7 @@ let registerUser = async (req, res) => {
 
     })
 
-    console.log(newUser)
+    // ! get rid of console.log() in register, login , or reset password for hacker to see the logging
 
     // ? Generate a token
     const token = jwt.sign(
@@ -35,7 +35,7 @@ let registerUser = async (req, res) => {
         { expiresIn: "24h" }
     )
 
-    console.log(token)
+
 
     res.status(201).json({
         message: `User Created ${req.method} ${req.originalUrl} route`,
@@ -51,7 +51,7 @@ let registerUser = async (req, res) => {
      //* codes before adding bcrypt
        // * call create on your User schema and pass the data
        let newUser = await User.create(req.body)
-       console.log(newUser)
+
    
        res.status(201).json({
            message: `User Created ${req.method} ${req.originalUrl} route`
@@ -67,7 +67,7 @@ let loginUser = async (req, res) => {
     /*    try { */
     /*  let keys = Object.keys(req.body); */
 
-    // console.log(req.body)
+
     const { email, password } = req.body;
     // * FindONe accepts query object where we match email from db to email from req
     //  let foundUser = await User.findOne({ where: { email: req.body.email } })
@@ -75,7 +75,7 @@ let loginUser = async (req, res) => {
 
 
 
-    console.log(" here is Found user", foundUser)
+
 
     if (!foundUser) {
         res.status(403).json({
@@ -99,7 +99,7 @@ let loginUser = async (req, res) => {
         // options (expiration)
         { expiresIn: "24h" }
     )
-    console.log("password is ", user.password)
+
 
     // ? compare database password (hash) with that of the user
     let verified = await bcrypt.compare(password, user.password)
