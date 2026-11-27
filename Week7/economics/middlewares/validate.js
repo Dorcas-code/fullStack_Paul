@@ -26,7 +26,7 @@ let validateSession = (req, res, next) => {
 
     // ? handle the auth header as Bearer or naked tokken
     let authToken = req.headers.authorization.includes("Bearer")
-        ? req.headers.authorization.splict(" ")[1]
+        ? req.headers.authorization.split(" ")[1]
         : req.headers.authorization
 
 
@@ -46,14 +46,16 @@ let validateSession = (req, res, next) => {
         // ? Safer than trusting the request
         // ? Comes from database and can be validated      
 
-
-        /*   let user = await User.findByPk(payload.id)
-  
-          req.user = user
-          console.log(req.user) */
+        /* 
+                let user = await User.findByPk(payload.id)
+        
+                req.user = user
+                console.log(req.user)
+         */
         req.user = payload
-        console.log("OUR REQUEST GOING THRU VALIDATOR NOW", payload)
-        /*  // original req.user = payload */
+        /*  
+        ? original : req.user = payload
+        */
 
         next()
 

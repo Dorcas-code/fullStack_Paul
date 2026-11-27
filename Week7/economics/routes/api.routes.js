@@ -3,8 +3,10 @@ const errorHandler = require("../middlewares/errorHandler")
 
 const router = require("express").Router()
 const { getAll, createNew, getByCountry, updateById, deleteById } = require("../controllers/api.controller")
+const requireRole = require("../middlewares/requireRoles")
+// ? Just like we put the middleware in app.js
 
-router.post("/new",
+router.post("/new", requireRole("admin"),
     createNew
 )
 
@@ -16,11 +18,11 @@ router.get("/country/:country",
     getByCountry
 )
 
-router.put("/country/:id",
+router.put("/country/:id", requireRole("admin"),
     updateById
 )
 
-router.delete("/country/:id",
+router.delete("/country/:id", requireRole("admin"),
     deleteById
 
 )

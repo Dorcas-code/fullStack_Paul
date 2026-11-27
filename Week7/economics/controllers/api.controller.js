@@ -1,5 +1,6 @@
 const { Country } = require("../models/api.model");
 const { Sequelize } = require("../db");
+
 /* let db = [] */
 let getAll = async (req, res) => {
     console.log(req.headers)
