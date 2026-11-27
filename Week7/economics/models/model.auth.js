@@ -32,7 +32,6 @@ const User = db.define("user", {
         }
     },
     role: {
-
         type: DataTypes.ENUM(
             "viewer",
             "editor",

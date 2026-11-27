@@ -46,13 +46,13 @@ let validateSession = (req, res, next) => {
         // ? Safer than trusting the request
         // ? Comes from database and can be validated      
 
-        /* 
-                let user = await User.findByPk(payload.id)
-        
-                req.user = user
-                console.log(req.user)
-         */
-        req.user = payload
+
+        let user = await User.findByPk(payload.id)
+
+        req.user = user
+        console.log(req.user)
+
+
         /*  
         ? original : req.user = payload
         */
