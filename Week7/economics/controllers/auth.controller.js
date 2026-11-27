@@ -120,21 +120,30 @@ let loginUser = async (req, res) => {
 }
 
 let resetPassword = async (req, res) => {
-    const { email, password } = req.body
+    const { email, currentPassword, password } = req.body
 
-    let foundUser = await User.findOne({ where: { email } })
+    // ?  Match the user by currentpassword instead of email
+    /*  let foundUser = await User.findOne({ where: { email } })
+ 
+     if (!foundUser) {
+         res.status(500).json({
+             message: "User not found "
+         })
+     } */
+    let validPassword = await bcrypt.compare(currentPassword, req.user.password)
 
-    if (!foundUser) {
-        res.status(500).json({
-            message: "User not found "
+    if (!validPassword) {
+        return res.status(403).json({
+            message: "Incorrect current password"
         })
     }
 
-    foundUser.password = bcrypt.hashSync(password, SALT)
+
+    req.user.password = bcrypt.hashSync(password, SALT)
 
     // * take the password and hash it
 
-    await foundUser.save()
+    await req.user.save()
     // * save the password to database
 
     res.status(200).json({ message: "Password Updated" })

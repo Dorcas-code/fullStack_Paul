@@ -50,7 +50,7 @@ let validateSession = (req, res, next) => {
         let user = await User.findByPk(payload.id)
 
         req.user = user
-        console.log(req.user)
+        console.log("this is the user info!", req.user)
 
 
         /*  
