@@ -3,6 +3,8 @@
 
 ### dotenv ###
 .env
+pgadmin.env
+postgres.env
 
 ### Node ###
 # Logs
